@@ -86,7 +86,7 @@ public class Astar
                   List<Collider> list = new List<Collider>();
                   list = node.ListColliders;
 
-                  if (CalculBadPaletNombers(curList, list) == 0)
+                  if (CalculBadPaletNumbers(curList, list) == 0)
                         equal = true;
                   else
                         equal = false;
@@ -127,7 +127,7 @@ public class Astar
                                     
                   Node currentNode = SelectMinF(openList);
 
-                  if (CalculBadPaletNombers(currentNode.ListColliders, goalList.ListColliders) == 0)
+                  if (CalculBadPaletNumbers(currentNode.ListColliders, goalList.ListColliders) == 0)
                   {
                         RewardPathFromEndToStart(currentNode, startNode);
                         stop = true;
@@ -157,7 +157,7 @@ public class Astar
                               else if (!IsCurrentNodeInTheList(currentNod, openList))
                               {
                                     currentNod.G = currentNode.G + D;
-                                    currentNod.H = CalculBadPaletNombers(currentNod.ListColliders, goalList.ListColliders);
+                                    currentNod.H = CalculBadPaletNumbers(currentNod.ListColliders, goalList.ListColliders);
                                     currentNod.F = currentNod.G + currentNod.H;
                                     currentNod.Parent = currentNode;
                                     openList.Add(currentNod);
@@ -172,7 +172,7 @@ public class Astar
                                                 currentNod.G = currentNode.G + D;
                                                 if (currentNod.G < nodeInlist.G)
                                                 {
-                                                      currentNod.H = CalculBadPaletNombers(currentNod.ListColliders, goalList.ListColliders);
+                                                      currentNod.H = CalculBadPaletNumbers(currentNod.ListColliders, goalList.ListColliders);
                                                       currentNod.F = currentNod.G + currentNod.H;
                                                       currentNod.Parent = currentNode;
                                                       openList.Remove(nodeInlist);
