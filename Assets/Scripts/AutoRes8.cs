@@ -26,7 +26,8 @@ public class AutoRes8 : MonoBehaviour, IPointerDownHandler,IPointerUpHandler
             transform.GetComponent<UnityEngine.UI.Image>().color = Color.white;
             transform.GetComponentInChildren<UnityEngine.UI.Text>().color = Color.blue;
 
-            Astar ast = new Astar(currentNode, goalNode);
+            //Astar ast = new Astar(currentNode, goalNode);
+            Astar2 ast = new Astar2(currentNode, goalNode);
             ast.Search();
 
             print("sorti");

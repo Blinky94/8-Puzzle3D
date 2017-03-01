@@ -10,60 +10,61 @@ public class Astar
       private Node goalList;
       private int inch;
       private int counter;
+      private List<Node> listOrdered;
 
-      private Node SelectMinF(List<Node> list)
+      private List<Node> SelectMinF(List<Node> list)
       {
-            List<Node> listOrdered = list;
-            bool IsFinish = false;
-
-            //listOrdered = list.OrderBy(c => c.F).ToList();
+            listOrdered.Clear();
+            listOrdered = list;
 
             if (list.Count > 1)
             {
+                  int longueur = list.Count;
+                  bool permut;
+
                   do
                   {
-                        for (int i = 0; i < list.Count - 1; i++)
+                        // hypothèse : le tableau est trié
+                        permut = false;
+                        for (int i = 0; i < longueur - 1; i++)
                         {
+                              // Teste si 2 éléments successifs sont dans le bon ordre ou non
                               if (list[i].F > list[i + 1].F)
                               {
                                     Node tmp = list[i];
                                     list[i] = list[i + 1];
                                     list[i + 1] = tmp;
-
-                                    IsFinish = true;
+                                    permut = true;
                               }
                         }
-                  } while (IsFinish == false);                
+                  }
+                  while (permut);
             }
-
-            foreach (var elem in list)
-                  Debug.Log("F value " + elem.F);
-          
-            return null;
+         
+            return listOrdered;
       }
 
       private int CalculBadPaletNumbers(List<Collider> currentList, List<Collider> goalList)
       {
             counter = 0;
 
-            //Test commentaire
             for (int i = 0; i < currentList.Count; i++)
             {
                   if (currentList[i] != goalList[i])
                         counter++;
-            }          
-        
-            return counter;         
+            }
+
+            return counter;
       }
 
-      public Astar(Node currentList,Node goalList)
+      public Astar(Node currentList, Node goalList)
       {
             inch = currentList.ListColliders.Count;
-            D = 1;          
+            D = 1;
             this.goalList = goalList;
 
             Node newNode = new Node(currentList.ListColliders);
-            
+
             openList = new List<Node>();
             closedList = new List<Node>();
 
@@ -72,12 +73,14 @@ public class Astar
             newNode.F = newNode.G + newNode.H;
 
             openList.Add(newNode);
+
+            listOrdered = new List<Node>();
       }
 
       private bool IsCurrentNodeInTheList(Node currentNode, List<Node> currentList)
       {
             bool equal = false;
-           
+
             List<Collider> curList = new List<Collider>();
             curList = currentNode.ListColliders;
 
@@ -91,7 +94,7 @@ public class Astar
                   else
                         equal = false;
             }
-            
+
             return equal;
       }
 
@@ -102,11 +105,11 @@ public class Astar
             return listAdjacents;
       }
 
-      private List<Node> RewardPathFromEndToStart(Node fromGoal,Node toStart)
+      private List<Node> RewardPathFromEndToStart(Node fromGoal, Node toStart)
       {
             List<Node> listPath = new List<Node>();
-
             Node current = fromGoal;
+
             while (current != toStart)
             {
                   listPath.Add(current);
@@ -116,25 +119,36 @@ public class Astar
             return listPath;
       }
 
+      private Node currentNode;
+
       public void Search()
       {
             bool stop = false;
-            Node startNode = openList[0];
-
-            while (stop == false)
+              Node startNode = openList[0];
+            currentNode = startNode;
+            do
             {
                   Debug.Log("------------------------BOUCLE PRINCIPALE-------------------------- ");
-                                    
-                  Node currentNode = SelectMinF(openList);
 
+                  List<Node> orderedListNode = SelectMinF(openList);
+
+                  if (orderedListNode.Count > 0)
+                  {
+                        currentNode = new Node(orderedListNode[0].ListColliders);
+                        currentNode.F = orderedListNode[0].F;
+                        currentNode.G = orderedListNode[0].G;
+                        currentNode.H = orderedListNode[0].H;
+                        currentNode.Parent = orderedListNode[0].Parent;
+                  }
+                  Debug.Log(CalculBadPaletNumbers(currentNode.ListColliders, goalList.ListColliders));
                   if (CalculBadPaletNumbers(currentNode.ListColliders, goalList.ListColliders) == 0)
                   {
+                        Debug.Log("reward OK !");
                         RewardPathFromEndToStart(currentNode, startNode);
-                        stop = true;
                   }
                   else if (openList.Count == 0)
                   {
-                        stop = true;
+                        break;
                   }
                   else
                   {
@@ -183,8 +197,7 @@ public class Astar
                               }
                         }
                   }
-            }
-                   
+            } while (CalculBadPaletNumbers(currentNode.ListColliders, goalList.ListColliders) != 0);
       }
-}    
-
+}
+  

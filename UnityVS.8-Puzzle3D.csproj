@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Astar.cs" />
+    <Compile Include="Assets\Scripts\Astar2.cs" />
     <Compile Include="Assets\Scripts\AutoRes8.cs" />
     <Compile Include="Assets\Scripts\ChargeObjects.cs" />
     <Compile Include="Assets\Scripts\Counter.cs" />

@@ -5,18 +5,15 @@ using System.Linq;
 public class Astar2
 {
       private int D;
+      private Node currentNode;
       private List<Node> openList;
       private List<Node> closedList;
-      private Node goalList;
+      private Node goal;
       private int inch;
       private int counter;
-      private List<Node> listOrdered;
 
-      private List<Node> SelectMinF(List<Node> list)
+      private List<Node> SortMinToMaxF(List<Node> list)
       {
-            listOrdered.Clear();
-            listOrdered = list;
-
             if (list.Count > 1)
             {
                   int longueur = list.Count;
@@ -41,10 +38,10 @@ public class Astar2
                   while (permut);
             }
 
-            return listOrdered;
+            return list;
       }
 
-      private int CalculBadPaletNumbers(List<Collider> currentList, List<Collider> goalList)
+      private int NumberOfDifferences(List<Collider> currentList, List<Collider> goalList)
       {
             counter = 0;
 
@@ -57,24 +54,27 @@ public class Astar2
             return counter;
       }
 
-      public Astar2(Node currentList, Node goalList)
+      public Astar2(Node start, Node goal)
       {
-            inch = currentList.ListColliders.Count;
+            inch = start.ListColliders.Count;
             D = 1;
-            this.goalList = goalList;
 
-            Node newNode = new Node(currentList.ListColliders);
+            this.goal = new Node(goal.ListColliders);
+            this.goal.F = 0;
+            this.goal.F = 0;
+            this.goal.H = 0;
+            this.goal.Parent = null;
+           
+            currentNode = new Node(start.ListColliders);
+            currentNode.G = 0;
+            currentNode.H = NumberOfDifferences(start.ListColliders, goal.ListColliders);
+            currentNode.F = 0;
+            currentNode.Parent = null;
 
             openList = new List<Node>();
             closedList = new List<Node>();
-
-            newNode.G = 0;
-            newNode.H = 0;
-            newNode.F = newNode.G + newNode.H;
-
-            openList.Add(newNode);
-
-            listOrdered = new List<Node>();
+         
+            closedList.Add(currentNode);
       }
 
       private bool IsCurrentNodeInTheList(Node currentNode, List<Node> currentList)
@@ -89,21 +89,14 @@ public class Astar2
                   List<Collider> list = new List<Collider>();
                   list = node.ListColliders;
 
-                  if (CalculBadPaletNumbers(curList, list) == 0)
+                  if (NumberOfDifferences(curList, list) == 0)
                         equal = true;
                   else
                         equal = false;
             }
 
             return equal;
-      }
-
-      private List<Node> GetAdjacentsNodes(Node current)
-      {
-            List<Node> listAdjacents = new List<Node>();
-
-            return listAdjacents;
-      }
+      }   
 
       private List<Node> RewardPathFromEndToStart(Node fromGoal, Node toStart)
       {
@@ -117,86 +110,61 @@ public class Astar2
             }
 
             return listPath;
-      }
-
-      private Node currentNode;
+      }   
 
       public void Search()
-      {
-            bool stop = false;
-            Node startNode = openList[0];
-            currentNode = startNode;
-            do
-            {
-                  Debug.Log("------------------------BOUCLE PRINCIPALE-------------------------- ");
+      {             
+           do
+           {
+                  int nullPos = PossibleMooves.NullPosition(currentNode.ListColliders);
 
-                  List<Node> orderedListNode = SelectMinF(openList);
+                  foreach(List<Collider> subList in PossibleMooves.ListOfMooves(inch, nullPos, currentNode.ListColliders))
+                  {
+                        Node nodeAdj = new Node(subList);
 
-                  if (orderedListNode.Count > 0)
-                  {
-                        currentNode = new Node(orderedListNode[0].ListColliders);
-                        currentNode.F = orderedListNode[0].F;
-                        currentNode.G = orderedListNode[0].G;
-                        currentNode.H = orderedListNode[0].H;
-                        currentNode.Parent = orderedListNode[0].Parent;
+                        if (IsCurrentNodeInTheList(nodeAdj, closedList))
+                        {
+                              continue;
+                        }
+                        else if (IsCurrentNodeInTheList(currentNode, openList))
+                        {                            
+                              foreach (Node nodeInlist in openList)
+                              {
+                                    if (nodeInlist == nodeAdj)
+                                    {
+                                          nodeAdj.G = currentNode.G + D;
+                                          if (nodeAdj.G < nodeInlist.G)
+                                          {
+                                                nodeAdj.H = NumberOfDifferences(nodeAdj.ListColliders, goal.ListColliders);
+                                                nodeAdj.F = nodeAdj.G + nodeAdj.H;
+                                                nodeAdj.Parent = currentNode;
+                                                openList.Remove(nodeInlist);
+                                                openList.Add(nodeAdj);
+                                          }
+                                    }
+                              }                                                           
+                        }
+                        else
+                        {
+                              nodeAdj.G = currentNode.G + D;
+                              nodeAdj.H = NumberOfDifferences(nodeAdj.ListColliders, goal.ListColliders);
+                              nodeAdj.F = nodeAdj.G + nodeAdj.H;
+                              nodeAdj.Parent = currentNode;
+                              openList.Add(nodeAdj);
+                        }
                   }
-                  Debug.Log(CalculBadPaletNumbers(currentNode.ListColliders, goalList.ListColliders));
-                  if (CalculBadPaletNumbers(currentNode.ListColliders, goalList.ListColliders) == 0)
-                  {
-                        Debug.Log("reward OK !");
-                        RewardPathFromEndToStart(currentNode, startNode);
-                  }
-                  else if (openList.Count == 0)
+
+                  if (openList.Count == 0)
                   {
                         break;
                   }
-                  else
-                  {
-                        if (IsCurrentNodeInTheList(currentNode, openList))
-                        {
-                              openList.Remove(currentNode);
-                              closedList.Add(currentNode);
-                        }
+     
+                  SortMinToMaxF(openList);                       
+                  currentNode = openList[0];                                     
 
-                        int nullPos = PossibleMooves.NullPosition(currentNode.ListColliders);
-                        Debug.Log("------------------------BOUCLE ADJACENTS-------------------------- ");
-                        foreach (List<Collider> adjList in PossibleMooves.ListOfMooves(inch, nullPos, currentNode.ListColliders))
-                        {
-                              Node currentNod = new Node(adjList);
+                  openList.RemoveAt(0);
+                  closedList.Add(currentNode);
 
-                              if (IsCurrentNodeInTheList(currentNod, closedList))
-                              {
-                                    continue;
-                              }
-                              else if (!IsCurrentNodeInTheList(currentNod, openList))
-                              {
-                                    currentNod.G = currentNode.G + D;
-                                    currentNod.H = CalculBadPaletNumbers(currentNod.ListColliders, goalList.ListColliders);
-                                    currentNod.F = currentNod.G + currentNod.H;
-                                    currentNod.Parent = currentNode;
-                                    openList.Add(currentNod);
-                              }
-                              else if (IsCurrentNodeInTheList(currentNod, openList))
-                              {
-                                    MonoBehaviour.print("------------------------BOUCLE OPENLIST-------------------------- ");
-                                    foreach (Node nodeInlist in openList)
-                                    {
-                                          if (nodeInlist == currentNod)
-                                          {
-                                                currentNod.G = currentNode.G + D;
-                                                if (currentNod.G < nodeInlist.G)
-                                                {
-                                                      currentNod.H = CalculBadPaletNumbers(currentNod.ListColliders, goalList.ListColliders);
-                                                      currentNod.F = currentNod.G + currentNod.H;
-                                                      currentNod.Parent = currentNode;
-                                                      openList.Remove(nodeInlist);
-                                                      openList.Add(currentNod);
-                                                }
-                                          }
-                                    }
-                              }
-                        }
-                  }
-            } while (CalculBadPaletNumbers(currentNode.ListColliders, goalList.ListColliders) != 0);
+            } while (NumberOfDifferences(currentNode.ListColliders, goal.ListColliders) != 0);
       }
 }

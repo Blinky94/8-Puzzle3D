@@ -27,13 +27,13 @@ class PossibleMooves
         return newNode;
     }
 
-    public static List<List<Collider>> ListOfMooves(int inch, int nullPaletIndex, List<Collider> currentList)
+    public static List<List<Collider>> ListOfMooves(int inch, int nullPos, List<Collider> currentList)
     {
         List<List<Collider>> listOfPossibles = new List<List<Collider>>();
 
         if (inch == 9)
         {
-            switch (nullPaletIndex)
+            switch (nullPos)
             {
                 case 1:
                     listOfPossibles.Clear();
