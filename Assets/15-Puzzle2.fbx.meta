@@ -1,0 +1,224 @@
+fileFormatVersion: 2
+guid: e761155848d90844bbcbfb3e8b34766c
+timeCreated: 1486889271
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: number 1
+    100004: number 10
+    100006: number 11
+    100008: number 12
+    100010: number 13
+    100012: number 14
+    100014: number 15
+    100016: number 2
+    100018: number 3
+    100020: number 4
+    100022: number 5
+    100024: number 6
+    100026: number 7
+    100028: number 8
+    100030: number 9
+    100032: Palet 1
+    100034: Palet 10
+    100036: Palet 11
+    100038: Palet 12
+    100040: Palet 13
+    100042: Palet 14
+    100044: Palet 15
+    100046: Palet 2
+    100048: Palet 3
+    100050: Palet 4
+    100052: Palet 5
+    100054: Palet 6
+    100056: Palet 7
+    100058: Palet 8
+    100060: Palet 9
+    100062: Plaque
+    100064: Sun
+    400000: //RootNode
+    400002: number 1
+    400004: number 10
+    400006: number 11
+    400008: number 12
+    400010: number 13
+    400012: number 14
+    400014: number 15
+    400016: number 2
+    400018: number 3
+    400020: number 4
+    400022: number 5
+    400024: number 6
+    400026: number 7
+    400028: number 8
+    400030: number 9
+    400032: Palet 1
+    400034: Palet 10
+    400036: Palet 11
+    400038: Palet 12
+    400040: Palet 13
+    400042: Palet 14
+    400044: Palet 15
+    400046: Palet 2
+    400048: Palet 3
+    400050: Palet 4
+    400052: Palet 5
+    400054: Palet 6
+    400056: Palet 7
+    400058: Palet 8
+    400060: Palet 9
+    400062: Plaque
+    400064: Sun
+    2300000: number 1
+    2300002: number 10
+    2300004: number 11
+    2300006: number 12
+    2300008: number 13
+    2300010: number 14
+    2300012: number 15
+    2300014: number 2
+    2300016: number 3
+    2300018: number 4
+    2300020: number 5
+    2300022: number 6
+    2300024: number 7
+    2300026: number 8
+    2300028: number 9
+    2300030: Palet 1
+    2300032: Palet 10
+    2300034: Palet 11
+    2300036: Palet 12
+    2300038: Palet 13
+    2300040: Palet 14
+    2300042: Palet 15
+    2300044: Palet 2
+    2300046: Palet 3
+    2300048: Palet 4
+    2300050: Palet 5
+    2300052: Palet 6
+    2300054: Palet 7
+    2300056: Palet 8
+    2300058: Palet 9
+    2300060: Plaque
+    3300000: number 1
+    3300002: number 10
+    3300004: number 11
+    3300006: number 12
+    3300008: number 13
+    3300010: number 14
+    3300012: number 15
+    3300014: number 2
+    3300016: number 3
+    3300018: number 4
+    3300020: number 5
+    3300022: number 6
+    3300024: number 7
+    3300026: number 8
+    3300028: number 9
+    3300030: Palet 1
+    3300032: Palet 10
+    3300034: Palet 11
+    3300036: Palet 12
+    3300038: Palet 13
+    3300040: Palet 14
+    3300042: Palet 15
+    3300044: Palet 2
+    3300046: Palet 3
+    3300048: Palet 4
+    3300050: Palet 5
+    3300052: Palet 6
+    3300054: Palet 7
+    3300056: Palet 8
+    3300058: Palet 9
+    3300060: Plaque
+    4300000: number 1
+    4300002: Palet 8
+    4300004: Plaque
+    4300006: Palet 7
+    4300008: Palet 4
+    4300010: Palet 1
+    4300012: Palet 2
+    4300014: Palet 3
+    4300016: Palet 6
+    4300018: Palet 5
+    4300020: number 2
+    4300022: number 3
+    4300024: number 5
+    4300026: number 4
+    4300028: number 6
+    4300030: number 8
+    4300032: number 7
+    4300034: number 9
+    4300036: number 10
+    4300038: number 11
+    4300040: number 12
+    4300042: number 13
+    4300044: number 14
+    4300046: number 15
+    4300048: Palet 9
+    4300050: Palet 10
+    4300052: Palet 11
+    4300054: Palet 12
+    4300056: Palet 13
+    4300058: Palet 14
+    4300060: Palet 15
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

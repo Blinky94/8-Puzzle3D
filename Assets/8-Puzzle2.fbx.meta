@@ -1,0 +1,152 @@
+fileFormatVersion: 2
+guid: 3c1102812459b4c4296345a3a4c17140
+timeCreated: 1485681217
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: number 1
+    100004: number 2
+    100006: number 3
+    100008: number 4
+    100010: number 5
+    100012: number 6
+    100014: number 7
+    100016: number 8
+    100018: Palet 1
+    100020: Palet 2
+    100022: Palet 3
+    100024: Palet 4
+    100026: Palet 5
+    100028: Palet 6
+    100030: Palet 7
+    100032: Palet 8
+    100034: Plaque
+    400000: //RootNode
+    400002: number 1
+    400004: number 2
+    400006: number 3
+    400008: number 4
+    400010: number 5
+    400012: number 6
+    400014: number 7
+    400016: number 8
+    400018: Palet 1
+    400020: Palet 2
+    400022: Palet 3
+    400024: Palet 4
+    400026: Palet 5
+    400028: Palet 6
+    400030: Palet 7
+    400032: Palet 8
+    400034: Plaque
+    2300000: number 1
+    2300002: number 2
+    2300004: number 3
+    2300006: number 4
+    2300008: number 5
+    2300010: number 6
+    2300012: number 7
+    2300014: number 8
+    2300016: Palet 1
+    2300018: Palet 2
+    2300020: Palet 3
+    2300022: Palet 4
+    2300024: Palet 5
+    2300026: Palet 6
+    2300028: Palet 7
+    2300030: Palet 8
+    2300032: Plaque
+    3300000: number 1
+    3300002: number 2
+    3300004: number 3
+    3300006: number 4
+    3300008: number 5
+    3300010: number 6
+    3300012: number 7
+    3300014: number 8
+    3300016: Palet 1
+    3300018: Palet 2
+    3300020: Palet 3
+    3300022: Palet 4
+    3300024: Palet 5
+    3300026: Palet 6
+    3300028: Palet 7
+    3300030: Palet 8
+    3300032: Plaque
+    4300000: number 1
+    4300002: Palet 8
+    4300004: Plaque
+    4300006: Palet 7
+    4300008: Palet 4
+    4300010: Palet 1
+    4300012: Palet 2
+    4300014: Palet 3
+    4300016: Palet 6
+    4300018: Palet 5
+    4300020: number 2
+    4300022: number 3
+    4300024: number 5
+    4300026: number 4
+    4300028: number 6
+    4300030: number 8
+    4300032: number 7
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
