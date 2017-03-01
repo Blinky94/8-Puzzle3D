@@ -42,7 +42,7 @@ public class Astar
             return null;
       }
 
-      private int CalculBadPaletNombers(List<Collider> currentList, List<Collider> goalList)
+      private int CalculBadPaletNumbers(List<Collider> currentList, List<Collider> goalList)
       {
             counter = 0;
 
