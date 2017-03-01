@@ -37,7 +37,7 @@ public class Astar
             }
 
             foreach (var elem in list)
-                  Debug.Log(elem.F);
+                  Debug.Log("F value " + elem.F);
           
             return null;
       }
