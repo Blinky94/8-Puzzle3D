@@ -42,10 +42,11 @@ public class Astar
             return null;
       }
 
-      private int Heuristic(List<Collider> currentList, List<Collider> goalList)
+      private int CalculBadPaletNombers(List<Collider> currentList, List<Collider> goalList)
       {
             counter = 0;
 
+            //Test commentaire
             for (int i = 0; i < currentList.Count; i++)
             {
                   if (currentList[i] != goalList[i])
@@ -85,7 +86,7 @@ public class Astar
                   List<Collider> list = new List<Collider>();
                   list = node.ListColliders;
 
-                  if (Heuristic(curList, list) == 0)
+                  if (CalculBadPaletNombers(curList, list) == 0)
                         equal = true;
                   else
                         equal = false;
@@ -126,7 +127,7 @@ public class Astar
                                     
                   Node currentNode = SelectMinF(openList);
 
-                  if (Heuristic(currentNode.ListColliders, goalList.ListColliders) == 0)
+                  if (CalculBadPaletNombers(currentNode.ListColliders, goalList.ListColliders) == 0)
                   {
                         RewardPathFromEndToStart(currentNode, startNode);
                         stop = true;
@@ -156,7 +157,7 @@ public class Astar
                               else if (!IsCurrentNodeInTheList(currentNod, openList))
                               {
                                     currentNod.G = currentNode.G + D;
-                                    currentNod.H = Heuristic(currentNod.ListColliders, goalList.ListColliders);
+                                    currentNod.H = CalculBadPaletNombers(currentNod.ListColliders, goalList.ListColliders);
                                     currentNod.F = currentNod.G + currentNod.H;
                                     currentNod.Parent = currentNode;
                                     openList.Add(currentNod);
@@ -171,7 +172,7 @@ public class Astar
                                                 currentNod.G = currentNode.G + D;
                                                 if (currentNod.G < nodeInlist.G)
                                                 {
-                                                      currentNod.H = Heuristic(currentNod.ListColliders, goalList.ListColliders);
+                                                      currentNod.H = CalculBadPaletNombers(currentNod.ListColliders, goalList.ListColliders);
                                                       currentNod.F = currentNod.G + currentNod.H;
                                                       currentNod.Parent = currentNode;
                                                       openList.Remove(nodeInlist);
